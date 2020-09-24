@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+</style>
+<body>
+
+<form th:action="@{RestaurantDetail/saveRestaurant}" modelAttribute="restaurant" method="POST" style="border:1px solid #ccc">
+  <div class="container">
+    <h1>ADD RESTAURANT</h1>
+    <p>Please Provide data to ADD Restaurant</p>
+    <hr>
+
+    <label for=""><b>Name:</b></label>
+    <input type="text" placeholder="Enter Restaurant Name" name="name" required>
+
+    <label for="psw"><b>Available Table count:</b></label>
+    <input type="text" placeholder="Enter Restaurant Available Table Count" name="availableTableCount" required>
+
+    <label for="psw-repeat"><b>Contact Number: </b></label>
+    <input type="text" placeholder="Enter Restaurant Contact Number" name="contactNumber" required>
+    
+    <label for="psw-repeat"><b>OpeningHour:</b></label>
+    <input type="text" placeholder="Enter Restaurant OpeningHour" name="openingHour" required>
+    
+    <label for="psw-repeat"><b>ClosingHour:</b></label>
+    <input type="text" placeholder="Enter Restaurant ClosingHour" name="closingHour" required>
+    
+     <label for=""><b>Latitude:</b></label>
+    <input type="text" placeholder="Enter Restaurant Latitude" name="latitude" required>
+
+    <label for="psw"><b>Longitude:</b></label>
+    <input type="text" placeholder="Enter Restaurant Longitude" name="longitude" required>
+
+    <label for="psw-repeat"><b>Address1: </b></label>
+    <input type="text" placeholder="Enter Restaurant Address1" name="address1" required>
+    
+    <label for="psw-repeat"><b>Address2:</b></label>
+    <input type="text" placeholder="Enter Restaurant Address2" name="address2" required>
+    
+    <label for="psw-repeat"><b>IsActive(true/false):</b></label>
+    <input type="text" placeholder="Enter Restaurant Active Status" name="isActive" required>
+    
+    <div class="clearfix">
+      <a th:href="@{index}"><button type="button" } class="cancelbtn">Cancel</button></a>
+      <button type="submit" value="save" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>
+
+</body>
+</html>

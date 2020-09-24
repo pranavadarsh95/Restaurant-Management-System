@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+        <title>ADMIN Portal for Restaurant</title>
+
+        <!-- reference our style sheet -->
+
+     
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+     
+     <style type="text/css">
+     
+     html, body{
+	margin-left:15px; margin-right:15px; 
+	padding:0px; 
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+table {   
+	border-collapse:collapse;
+	border-bottom:1px solid gray;
+	font-family: Tahoma,Verdana,Segoe,sans-serif;
+	width:100%;
+}
+ 
+ .cancelbtn, .signupbtn {
+  float: left;
+  width: 100%;
+ background-color:yellow;
+  color:black;
+}
+ 
+th {
+	border-bottom:1px solid gray;
+	background:none repeat scroll 0 0 #09c332;
+	padding:10px;
+	color: #FFFFFF;
+}
+
+tr {
+	border-top:1px solid gray;
+	text-align:center;	
+}
+ 
+tr:nth-child(even) {background: #FFFFFF}
+tr:nth-child(odd) {background: #BBBBBB}	
+ 
+#wrapper {width: 100%; margin-top: 0px; }
+#header {width: 100%; background: #09c332; margin-top: 0px; padding:15px 0px 15px 15px;}
+#header h2 {width: 100%; margin:auto; color: #FFFFFF;}
+#container {width: 100%; margin:auto}
+#container h3 {color: #000;}
+#container #content {margin-top: 20px;}
+
+.add-button {
+	border: 1px solid #666; 
+	border-radius: 5px; 
+	padding: 4px; 
+	font-size: 12px;
+	font-weight: bold;
+	width: 120px; 
+	padding: 5px 10px; 
+	
+	margin-bottom: 15px;
+	background: #cccccc;
+}
+     
+     
+     </style>
+     
+    </head>
+    <body>
+       
+       
+       
+       <div id="wrapper">
+		<div id="header">
+			<h2>ADMIN Portal for Restaurant</h2>
+		</div>
+	</div>
+	
+	<div id="container">
+	 <!--  onclick="window.location.th:href="@{AdminControlledUserADD}"; return false;" -->
+		<div id="content">
+		
+			<!-- put new button: Add Customer -->
+		
+			
+			<a th:href="@{/addRestaurantfromadmin}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Add Restaurant</a>
+			<!--  add our html table here -->
+		
+			<table>
+				<tr>
+				    <th>ID</th>					
+					<th>Name</th>
+					<th>Available Table count </th>
+					<th>Contact Number</th>
+					<th>OpeningHour</th>
+					<th>ClosingHour</th>
+					<th>Latitude</th>
+					<th>Longitude</th>
+					<th>Address1</th>
+					<th>Address2</th>
+					<th>IsActive</th>
+				</tr>
+				
+				<div>
+				
+					<tr  th:each="tempRestaurant: ${restaurants}">
+					    <td th:text="${tempRestaurant.id}" ></td>
+						<td th:text="${tempRestaurant.name}" ></td>
+						<td th:text="${tempRestaurant.availableTableCount}" ></td>
+						<td th:text="${tempRestaurant.contactNumber}" ></td>
+						<td th:text="${tempRestaurant.openingHour}" ></td>
+						<td th:text="${tempRestaurant.closingHour}" ></td>
+						<td th:text="${tempRestaurant.latitude}" ></td>
+						<td th:text="${tempRestaurant.longitude}" ></td>
+						<td th:text="${tempRestaurant.address1}" ></td>
+						<td th:text="${tempRestaurant.address2}" ></td>
+						<td th:text="${tempRestaurant.isActive}" ></td>
+					<td>
+					<div class="btn-group">
+                     <a th:href="@{/RestaurantDetail/updateAdminRestaurantBefore/(id=${tempRestaurant.id})}"class="btn btn-primary" id="editButton"><i class="icon_pencil-edit"></i>Update</a>
+                     <a class="btn btn-success" id="detailsButton"><i class="icon_document_alt"></i></a>
+                     <a th:href="@{/RestaurantDetail/deleteRestaurant/(restaurantId=${tempRestaurant.id})}"class="btn btn-danger" id="deleteButton"><i class="icon_close_alt2"></i>Delete</a>
+                     </div> 
+							
+							
+						</td>
+						
+					 </tr>
+					 
+				 </div>
+				
+						
+			</table>
+				
+		</div>
+	
+	</div>
+       
+      <p></p>
+        <a th:href="@{/index}"><button type="button" } class="cancelbtn">HOME</button></a>
+        
+        
+    </body>
+</html>
