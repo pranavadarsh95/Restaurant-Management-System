@@ -1,15 +1,20 @@
 package com.pranavadarsh.RestaurantManagementSystem.Entity;
 
+import static com.pranavadarsh.RestaurantManagementSystem.Common.ResponseEnum.ENTERED_VALUE_ISWRONG;
+
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
 
 import com.pranavadarsh.RestaurantManagementSystem.Exception.TableUnAvailableException;
-
-import static com.pranavadarsh.RestaurantManagementSystem.Common.ResponseEnum.*;
 
 @Entity
 @Table(name="restaurant")
@@ -24,15 +29,19 @@ public class Restaurant {
 	@Column(name="name")
 	private String name;
 	
-	 @Column(name = "CONTACT_NUMBER", unique = true, nullable = false)
+	
+	@Size(min = 10, max = 10,message="Please provide correct 10-digit Contact number")
+	@Column(name = "CONTACT_NUMBER", unique = true, nullable = false)
 	private String contactNumber;
 	
-	@Column(name="available_table_count", unique = true, nullable = false)
+	@Column(name="available_table_count", nullable = false)
 	private int availableTableCount; 
 	
+	@Range(min=1,max=12,message="Please provide openingHour correct Time (1-12 Hour) format ")
 	@Column(name="opening_hour")
 	private int openingHour;
 	
+	@Range(min=1,max=12,message="Please provide closingHour correct Time (1-12 Hour) format ")
 	@Column(name="closing_hour")
 	private int closingHour;
 	

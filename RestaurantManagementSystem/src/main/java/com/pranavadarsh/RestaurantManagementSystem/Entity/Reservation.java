@@ -32,11 +32,11 @@ public class Reservation {
 	private int bookingEndTime;
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY,cascade= {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})//,cascade = {CascadeType.ALL}
+	@ManyToOne(fetch = FetchType.LAZY,cascade= { CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})//,cascade = {CascadeType.ALL}
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@ManyToOne(fetch = FetchType.LAZY,cascade= {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})//,cascade = {CascadeType.ALL}
+	@ManyToOne(fetch = FetchType.LAZY,cascade= { CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})//,cascade = {CascadeType.ALL}
 	@JoinColumn(name="restaurant_id")
 	private Restaurant restaurant;
 

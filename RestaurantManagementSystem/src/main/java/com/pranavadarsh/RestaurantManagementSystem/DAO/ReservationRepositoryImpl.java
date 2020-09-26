@@ -13,7 +13,9 @@ import com.pranavadarsh.RestaurantManagementSystem.Entity.Restaurant;
 import com.pranavadarsh.RestaurantManagementSystem.Entity.User;
 import com.pranavadarsh.RestaurantManagementSystem.Exception.InvalidReservationException;
 import com.pranavadarsh.RestaurantManagementSystem.Exception.ReservationAlreadyBookedException;
+import com.pranavadarsh.RestaurantManagementSystem.Exception.RestaurantNotFoundException;
 import com.pranavadarsh.RestaurantManagementSystem.Exception.TableUnAvailableException;
+import com.pranavadarsh.RestaurantManagementSystem.Exception.UserNotFoundException;
 import com.pranavadarsh.RestaurantManagementSystem.Model.RequestReservation;
 
 import static com.pranavadarsh.RestaurantManagementSystem.Common.ResponseEnum.*;
@@ -47,6 +49,11 @@ public class ReservationRepositoryImpl {
 		// Condition 1 - Is Restaurant open?
 		
 		Restaurant restaurant = restaurantRepository.findByContactNumber(requestReservation.getRestaurantContactNumber().trim());
+		
+		if(restaurant==null)
+			throw new RestaurantNotFoundException(Restaurant_NOT_PRESENT.getMessage());
+		
+		
 		if (!restaurant.getIsActive())//if restaurant is closed
            throw new TableUnAvailableException(RESTAURANT_ISCLOSED.getMessage());
 
@@ -55,6 +62,10 @@ public class ReservationRepositoryImpl {
 		          isTableAvailable(requestReservation,restaurant);
         log.info("Step 1 ");
         User user = userRepository.findByContactNumber(requestReservation.getUserContactNumber().trim());
+        
+        if(user==null)
+        	throw new UserNotFoundException(USER_NOT_PRESENT.getMessage());
+        
         log.info("Step 2 ");
         
         // Condition 3 - don't allow more than one booking for one user with same restaurant and time slot

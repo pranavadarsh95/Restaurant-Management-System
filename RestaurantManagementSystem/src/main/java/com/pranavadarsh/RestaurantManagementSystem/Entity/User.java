@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 
 
@@ -17,9 +19,11 @@ public class User {
 	@Column(name="id")
 	private int id;
 	
+	@Size(min = 10, max = 10,message="Please provide correct 10-digit Contact number")
 	@Column(name = "CONTACT_NUMBER", unique = true, nullable = false)
 	private String contactNumber;
 	
+	@Email(message="Please provide Valid Email Address")
 	@Column(name = "EMAIL_ID", unique = true, nullable = false)
 	private String emailId;
 	
@@ -29,6 +33,7 @@ public class User {
 	@Column(name="last_name")
 	private String lastName;
 	
+	@Size(min = 4, max = 100,message="Please provide atleast 4-digit password")
 	@Column(name="password")
 	private String password;
 
