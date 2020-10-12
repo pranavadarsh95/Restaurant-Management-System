@@ -75,8 +75,9 @@ button:hover {
 
 <form th:action="@{userDetail/saveUser}" modelAttribute="user" method="POST" style="border:1px solid #ccc">
   <div class="container">
-    <h1>ADD USER</h1>
-    <p>Please Provide data to ADD USER</p>
+    <h1 style="text-align:center">ADD USER</h1>
+    <p style="text-align:center">Please Provide data to ADD USER</p>
+    <h3><a href="https://www.bcryptcalculator.com/" target="_blank">Click to Generate ByCRYPT Password</a></h3>
     <hr>
 
     <label for=""><b>User First Name:</b></label>
@@ -92,7 +93,7 @@ button:hover {
     <input type="text" placeholder="Enter User Email" name="emailId" required>
     
     <label for="psw-repeat"><b>User Password:</b></label>
-    <input type="text" placeholder="Enter User Password atleast 4 digit" name="password" required>
+    <input type="text" placeholder="Enter ***ByCRYPT*** Password atleast 4 digit" name="password" required>
     
     <div class="clearfix">
       <a th:href="@{index}"><button type="button" } class="cancelbtn">Cancel</button></a>

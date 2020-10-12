@@ -54,6 +54,14 @@ public class TestingController {
 		return "AdminControlledUserADD";
 	}
 	
+	@GetMapping("/addUserfromAnyWhere")
+	public String callAdminfromAnyWhere(Model theModel) {
+     User theUser = new User();
+		
+		theModel.addAttribute("user", theUser);
+		return "AdminControlledUserADDFromAnyWhere";
+	}
+	
 	@GetMapping("/addRestaurantfromadmin")
 	public String callAdminRestaurant(Model theModel) {
      Restaurant theRestaurant = new Restaurant();

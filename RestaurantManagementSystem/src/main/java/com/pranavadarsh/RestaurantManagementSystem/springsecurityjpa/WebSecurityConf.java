@@ -37,10 +37,11 @@ public class WebSecurityConf extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 	    
+		
 	    .antMatchers("/RestaurantDetail/saveRestaurant","/RestaurantDetail/getRestaurant/**").hasAnyAuthority("ADMIN", "RESTAURANT_OWNER")
         .antMatchers("/userDetail/getUser/**").hasAnyAuthority("ADMIN", "USER")
         .antMatchers("/ReservationDetail/getReservation/**").hasAnyAuthority("ADMIN", "RESTAURANT_OWNER","USER")
-        .antMatchers("/ReservationDetail/bookReservation","/RestaurantDetail/getALLRestaurants").permitAll()
+        .antMatchers("/ReservationDetail/bookReservation","/RestaurantDetail/getALLRestaurants","/userDetail/saveUserWithoutLogin").permitAll()
         .antMatchers("/ReservationDetail/**","/RestaurantDetail/**","/userDetail/**").hasAuthority("ADMIN")
         .antMatchers("/**").permitAll()
         .and().formLogin();

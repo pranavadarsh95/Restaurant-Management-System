@@ -34,6 +34,22 @@ public class UserController {
 		this.userServiceRepository=userServiceRepository;
 	   }
 	   
+	   @PostMapping("/saveUserWithoutLogin")
+	   public String saveUsersWithoutLogin(@ModelAttribute("user") User user,Model theModel) {
+		        userService.saveUsers(user);
+		
+		int User_id = user.getId();
+		theModel.addAttribute("Find_User_id", User_id);
+		
+		System.out.println("Find_User_id "+User_id);
+		
+		// provide login id and password for Security
+		MyUserDetails m = new MyUserDetails(user.getFirstName()+" "+user.getLastName(),user.getPassword(),true,"USER");     
+		    userServiceRepository.save(m);
+		
+		   return "UserREGISTERSUCCESS";
+	   }
+	   
 	   @PostMapping("/saveUser")
 	   public String saveUsers(@ModelAttribute("user") User user) {
 		        userService.saveUsers(user);

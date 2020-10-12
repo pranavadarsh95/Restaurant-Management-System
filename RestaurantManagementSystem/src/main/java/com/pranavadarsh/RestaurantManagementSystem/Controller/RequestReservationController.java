@@ -44,6 +44,7 @@ public class RequestReservationController {
 	   public String findAllReservations(Model theModel){
 		  
 		   List<Reservation> theReservation= reservationService.findAllReservations();
+		   System.out.println("Inside getALLReservations ");
 		   theModel.addAttribute("reservations",theReservation);
 		   return "AdminControlledReservation";
 	   }
@@ -53,10 +54,15 @@ public class RequestReservationController {
 	
 	
 	@PostMapping("/bookReservation")
-	public String bookReservation(@ModelAttribute("Reservation") RequestReservation Reservation) {
+	public String bookReservation(@ModelAttribute("Reservation") RequestReservation Reservation,Model theModel) {
 		System.out.println("Inside bookReservation");
 		
-	         reservationService.bookReservation(Reservation);
+		Reservation reservation=reservationService.bookReservation(Reservation);
+	         
+	        
+	 		theModel.addAttribute("Find_Reservation_id", reservation.getId());
+	 		
+	 		System.out.println("Find_User_id "+reservation.getId());
 	         
 	         return "RESERVATIONSUCCESSFULLYBOOKED";
 	}

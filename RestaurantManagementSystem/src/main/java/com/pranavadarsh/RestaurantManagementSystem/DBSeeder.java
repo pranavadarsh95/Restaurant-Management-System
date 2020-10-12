@@ -1,4 +1,4 @@
-package com.pranavadarsh.RestaurantManagementSystem;
+/*package com.pranavadarsh.RestaurantManagementSystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,9 +69,9 @@ public class DBSeeder implements CommandLineRunner {
        // Book a Reservation for Pranav Adarsh in Khanna Paratha Wala Restaurant 
         
         
-        
-        Reservation reser= new Reservation(8/*no of person*/,4/*start time*/,5/*end time*/,pranav,khanna);
-        reservationRepository.save(reser);
+    */    
+     //   Reservation reser= new Reservation(8/*no of person*/,4/*start time*/,5/*end time*/,pranav,khanna);
+ /*       reservationRepository.save(reser);
         
         
         // For User Login username and password
@@ -86,4 +86,4 @@ public class DBSeeder implements CommandLineRunner {
 				"USER"));//password=>pra123
         
     }
-}
+}*/
